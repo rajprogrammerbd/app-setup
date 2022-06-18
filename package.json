@@ -1,5 +1,6 @@
 {
   "name": "app-setup",
+  "homepage": "https://rajprogrammerbd.github.io/app-setup",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -20,6 +21,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "prepush": "yarn run lint && yarn run test",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build",
     "test": "jest --coverage",
     "test:watch": "jest --watch --coverage",
     "eject": "react-scripts eject",
@@ -79,11 +82,12 @@
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-storybook": "^0.5.12",
+    "gh-pages": "^4.0.0",
+    "husky": "^8.0.1",
+    "jest": "^28.1.1",
     "prettier": "^2.7.1",
     "prop-types": "^15.8.1",
-    "webpack": "^5.73.0",
-    "husky": "^8.0.1",
-    "jest": "^28.1.1"
+    "webpack": "^5.73.0"
   },
   "jest": {
     "collectCoverageFrom": [
