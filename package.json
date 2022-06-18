@@ -81,10 +81,9 @@
     "eslint-plugin-storybook": "^0.5.12",
     "prettier": "^2.7.1",
     "prop-types": "^15.8.1",
-    "webpack": "^5.73.0"
+    "webpack": "^5.73.0",
     "husky": "^8.0.1",
-    "jest": "^28.1.1",
-    "prettier": "^2.7.1"
+    "jest": "^28.1.1"
   },
   "jest": {
     "collectCoverageFrom": [
