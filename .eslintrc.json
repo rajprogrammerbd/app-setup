@@ -10,7 +10,6 @@
         "airbnb",
         "airbnb-typescript",
         "plugin:import/typescript",
-        "plugin:prettier/recomended",
         "plugin:storybook/recommended"
     ],
     "parser": "@typescript-eslint/parser",
