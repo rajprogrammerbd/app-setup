@@ -3,7 +3,9 @@ import React from 'react';
 
 function App() {
   return (
-    <h1>Welcome to Raj's Page</h1>
+    <div className="container mx-auto flex justify-center">
+      <span className="subpixel-antialiased text-lg indent-8 inline-block align-baseline">Welcome to Raj's Page</span>
+    </div>
   );
 }
 
