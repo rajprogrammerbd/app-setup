@@ -1,6 +1,7 @@
+/* eslint-disable no-param-reassign */
+/* eslint-disable no-return-assign */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
-import NumberFormat from 'react-number-format';
 
 function App() {
   const [text, setText] = useState('');
@@ -11,9 +12,16 @@ function App() {
     setText(value.replace(/[^A-Z]/gi, ''));
   };
 
-  const changeNumber = (e: any) => {
-    const { value } = e.target;
-    setNumber(value);
+  const changeNumber = (event: any) => {
+    event.target.value = event.target.value.replace(/[^0-9]*/g, '');
+
+    setNumber(event.target.value);
+  };
+
+  const keyDown = (event: any) => {
+    if (event.key === '.') {
+      event.preventDefault();
+    }
   };
 
   return (
@@ -27,7 +35,7 @@ function App() {
       <form className="block">
         <label className="block">
           <span className="block text-sm font-medium text-slate-700">Input type number</span>
-          <NumberFormat format="######" value={number} onChange={changeNumber} placeholder="Enter the number" className="border border-slate-200 placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500" />
+          <input type="number" value={number} onKeyDown={keyDown} onChange={changeNumber} placeholder="Enter the text" className="border border-slate-200 placeholder-slate-400 contrast-more:border-slate-400 contrast-more:placeholder-slate-500" />
         </label>
       </form>
     </>
