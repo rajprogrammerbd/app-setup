@@ -1,6 +1,7 @@
 import React from 'react';
 
 function App() {
+  const [state, setState] = React.useState({ name: 'Raj Dutta' });
   React.useEffect(() => {
     if ('OTPCredential' in window) {
       window.addEventListener('DOMContentLoaded', () => {
@@ -9,9 +10,9 @@ function App() {
           otp: { transport: ['sms'] },
           signal: ac.signal,
         }).then((otp) => {
-          window.alert(otp);
+          setState({ name: JSON.stringify(otp) });
         }).catch((err) => {
-          window.alert(err);
+          setState({ name: JSON.stringify(err) });
         });
       });
     } else {
@@ -19,7 +20,7 @@ function App() {
     }
   }, []);
 
-  return <h4>Hello World</h4>;
+  return (state.name) ? <p>{JSON.stringify(state.name)}</p> : <p>Nothing to show</p>;
 }
 
 export default App;
