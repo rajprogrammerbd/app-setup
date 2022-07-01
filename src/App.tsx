@@ -3,7 +3,7 @@ import React from 'react';
 function App() {
   React.useEffect(() => {
     if ('OTPCredential' in window) {
-      window.addEventListener('DOMContentLoaded', (e) => {
+      window.addEventListener('DOMContentLoaded', () => {
         const ac = new AbortController();
         navigator.credentials.get({
           otp: { transport: ['sms'] },
