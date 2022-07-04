@@ -1,26 +1,27 @@
 import React from 'react';
 
 function App() {
-  const [state, setState] = React.useState({ name: 'Raj Dutta' });
+  const [state, setState] = React.useState({ name: 'default' });
   React.useEffect(() => {
     if ('OTPCredential' in window) {
       window.addEventListener('DOMContentLoaded', () => {
-        const ac = new AbortController();
         navigator.credentials.get({
           otp: { transport: ['sms'] },
-          signal: ac.signal,
-        }).then((otp) => {
-          setState({ name: JSON.stringify(otp) });
-        }).catch((err) => {
-          setState({ name: JSON.stringify(err) });
+        }).then((otp: any) => {
+          setState({ name: otp.code });
+        }).catch(() => {
+          setState({ name: 'something is fishy' });
         });
       });
-    } else {
-      window.alert('WebOTP not supported!.');
     }
   }, []);
 
-  return (state.name) ? <p>{JSON.stringify(state.name)}</p> : <p>Nothing to show</p>;
+  return (
+    <form>
+      <input style={{ border: '1px solid #ddd' }} type="text" autoComplete="one-time-code" onChange={(e: any) => setState(e.target.value)} value={state.name} required />
+      <input type="submit" />
+    </form>
+  );
 }
 
 export default App;
