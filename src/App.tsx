@@ -9,19 +9,14 @@ export default class App extends React.Component {
 
   componentDidMount() {
     if ('OTPCredential' in window) {
-      const ac = new AbortController();
-
       navigator.credentials
         .get({
           otp: { transport: ['sms'] },
-          signal: ac.signal,
         })
         .then((otp: any) => {
-          this.setState({ otp: otp.code });
-          ac.abort();
+          this.setState({ otp: JSON.stringify(otp).toString() });
         })
         .catch((err) => {
-          ac.abort();
           console.log(err);
         });
     }
