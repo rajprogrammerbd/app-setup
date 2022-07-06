@@ -9,16 +9,15 @@ export default class App extends React.Component {
 
   componentDidMount() {
     if ('OTPCredential' in window) {
-      navigator.credentials
-        .get({
+      window.addEventListener('DOMContentLoaded', () => {
+        navigator.credentials.get({
           otp: { transport: ['sms'] },
-        })
-        .then((otp: any) => {
-          this.setState({ otp: JSON.stringify(otp).toString() });
-        })
-        .catch((err) => {
-          console.log(err);
+        }).then((otp: any) => {
+          window.alert(otp);
+        }).catch((err) => {
+          window.alert(err);
         });
+      });
     }
   }
 
